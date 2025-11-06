@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+:root {
+
+  --foreground: #fefefe;
+}
+
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+body p {
+
+  line-height: 1;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Arimo', sans-serif !important;
+  font-weight: 900;
+  line-height: 1;
+}
+
+@layer utilities {
+  .reflect {
+    -webkit-box-reflect: below 15px
+      linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.138), rgba(0,0,0,0.385));
+  }
+
+
+
+
+  .deg {
+    transform: rotate(15deg);
+    width: 200px;
+    height: 200px;
+  }
+
+
+}
+
+
+
+
+.card { 
+
+  cursor: pointer;
+  padding: 50px;
+  position: relative;
+  transition: 1s;
+  border-radius: 80px;
+  background: radial-gradient(
+    58.69% 43.16% at 50% 87.61%,
+    #003fbd86 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  
+  box-shadow: 0px 0px 56px 0px #003EBD inset;
+  backdrop-filter: blur(15px);
+}
+
+.card-box-content {
+
+  display: flex;
+  flex-direction: column;
+  color: #fefefe;
+  gap: 25px;
+  width: 60%;
+}
+
+/* Seu arquivo styles/globals.css (ou onde a classe .arrow-style está definida) */
+
+.arrow-style {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(
+      58.69% 43.16% at 50% 87.61%,
+      #ffffff5c 0%,
+      rgba(0, 0, 0, 0.158) 100%
+    );
+     top: 50%;
+  transform: translate(0%, 50%);
+    box-shadow: 0px 0px 36px 0px #0035bb72 inset;
+    backdrop-filter: blur(12px);
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    z-index: 20; /* Aumentei de 10 para 20 para garantir que fiquem acima de tudo */
+    font-size: 20px;
+    transition: all 0.3s;
+}
+
+.slider .slider-animation {
+  width: 3600px;
+  animation: scroll 20s linear infinite;
+}
+.slider .slider-animation:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0)
+  }
+  100% {
+    transform: translateX(-1000px)
+  }
+}
+
+/* app/globals.css */
+
+/* app/globals.css */
+
+/* Keyframes da animação de rolagem */
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Move 100% da largura do contêiner logos-slide. */
+    transform: translateX(-100%); 
+  }
+}
+
+/* Aplica a animação no contêiner original e na cópia */
+.logos-slide,
+.logos-slide-copy {
+  animation: slide 55s linear infinite;
+  /* Certifica-se de que o clone e o original se comportam como um único bloco horizontal */
+  display: flex; 
+  flex-shrink: 0; /* IMPEDE que o slide inteiro encolha no contêiner principal */
+}
+
+ .logos-slide {
+  filter: invert();
+}
+
+
+
+
+
+
+
+
+
