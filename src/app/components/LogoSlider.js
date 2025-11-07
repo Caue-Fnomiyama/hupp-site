@@ -5,9 +5,9 @@ import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 const logos = [
-  { src: '/3m.svg', alt: '3M Logo' },
-  { src: '/forbes.svg', alt: 'Forbes Logo' },
-  { src: '/macys.svg', alt: 'Macy\'s Logo' },
+  { src: '/image.png', alt: 'Unimar logo' },
+  { src: '/bypetz.png', alt: 'Bypetz Logo' },
+  { src: '/omnilogo.png', alt: 'Omnistring Logo' },
 ];
 
 const LogoSlider = () => {
@@ -47,9 +47,8 @@ const LogoSlider = () => {
             key={index}
             src={logo.src}
             alt={logo.alt}
-            width={80} 
+            width={100} 
             height={32} 
-            // flex-shrink-0 (NÃO ENCOLHER) e mx-8 (ESPAÇAMENTO)
             className="flex-shrink-0 h-8 w-auto mx-8"
             unoptimized
           />

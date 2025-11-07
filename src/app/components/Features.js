@@ -1,5 +1,8 @@
+'use client'; 
+
 import React from 'react';
 import { Shield, Filter, CheckCircle } from 'lucide-react'; 
+import AnimateOnScroll from './AnimateOnScroll'; // <-- Componente de Animação Importado
 
 // =========================================================================
 // ESTILOS DE BORDA
@@ -22,6 +25,11 @@ const customCardStyles = {
 export default function HuppCleanSectionsNoFeatures() {
   const gridGap = 'gap-5';
 
+  // Configuração padrão da animação: Fade-in + Slide-up (Surgir de baixo)
+  const initialClass = 'opacity-0 translate-y-10';
+  const finalClass = 'opacity-100 translate-y-0';
+  const transitionProps = 'transition-all duration-700 ease-out';
+
   return (
     <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
       
@@ -41,9 +49,14 @@ export default function HuppCleanSectionsNoFeatures() {
       <div className={`max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 ${gridGap}`}>
         
         {/* ==============================================
-            CARD 1 — CIRCULO COM FUNDO QUADRICULADO ANIMADO
+            CARD 1 — CIRCULO COM FUNDO QUADRICULADO ANIMADO (Delay-100)
             ============================================== */}
-        <div className={`col-span-full relative ${borderThickness} ${borderGradient} ${cardRadius}`}>
+        <AnimateOnScroll
+          classNameInitial={initialClass}
+          classNameFinal={finalClass}
+          transitionProps={`${transitionProps} delay-100`}
+          className={`col-span-full relative ${borderThickness} ${borderGradient} ${cardRadius}`}
+        >
           <div
             className={`${cardInnerRadius} p-8 lg:p-12 h-full flex flex-col lg:flex-row gap-12 items-center justify-between`}
             style={customCardStyles}
@@ -51,7 +64,7 @@ export default function HuppCleanSectionsNoFeatures() {
             
             {/* 1. BLOCO DE TEXTO */}
             <div className="w-full lg:w-1/2 text-center lg:text-left z-10">
-              <h3 className="text-3xl sm:text-4xl font-bold text-black mb-6">
+              <h3 className="text-4xl sm:text-4xl font-bold text-black mb-6">
                 Quantas boas{' '}
                 <span className="bg-gradient-to-r from-[#003EBD] via-[#0295D5] to-[#003EBD] bg-clip-text text-transparent">
                   ideias
@@ -67,15 +80,12 @@ export default function HuppCleanSectionsNoFeatures() {
               </button>
             </div>
 
-            {/* 2. BLOCO VISUAL CIRCULAR
-              Modificado: Adicionado estilo inline para o efeito de máscara (fading edges)
-            */}
+            {/* 2. BLOCO VISUAL CIRCULAR */}
             <div 
-              className="relative flex items-center justify-center w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden opa transition-all duration-700 hover:bg-white/20 order-first lg:order-none"
+              className="relative flex items-center justify-center w-44 h-44 lg:w-80 lg:h-80 rounded-full overflow-hidden opa transition-all duration-700 hover:bg-white/20 order-first lg:order-none"
               style={{
-                // Máscara radial que desvanece suavemente o conteúdo (fundo quadriculado e logo)
                 maskImage: 'radial-gradient(circle, white 60%, transparent 100%)',
-                maskMode: 'alpha', // Para garantir que o gradiente controle a opacidade
+                maskMode: 'alpha',
               }}
             >
               
@@ -100,12 +110,17 @@ export default function HuppCleanSectionsNoFeatures() {
               />
             </div>
           </div>
-        </div>
+        </AnimateOnScroll>
 
         {/* ==============================================
-            CARD 2
+            CARD 2 (Delay-300)
             ============================================== */}
-        <div className={`md:col-span-2 lg:col-span-4 relative ${borderThickness} ${borderGradient} ${cardRadius}`}>
+        <AnimateOnScroll
+          classNameInitial={initialClass}
+          classNameFinal={finalClass}
+          transitionProps={`${transitionProps} delay-300`}
+          className={`md:col-span-2 lg:col-span-4 relative ${borderThickness} ${borderGradient} ${cardRadius}`}
+        >
           <div 
             className={`${cardInnerRadius} p-8 h-full flex flex-col items-center text-center`} 
             style={customCardStyles}
@@ -121,12 +136,17 @@ export default function HuppCleanSectionsNoFeatures() {
               A Hupp é um sistema gamificado de ideias. Compartilhar ideias, ganhar pontos, subir no ranking e ver suas ideias se tornarem realidade.
             </p>
           </div>
-        </div>
+        </AnimateOnScroll>
 
         {/* ==============================================
-            CARD 3
+            CARD 3 (Delay-500)
             ============================================== */}
-        <div className={`md:col-span-2 lg:col-span-2 relative ${borderThickness} ${borderGradient} ${cardRadius}`}>
+        <AnimateOnScroll
+          classNameInitial={initialClass}
+          classNameFinal={finalClass}
+          transitionProps={`${transitionProps} delay-500`}
+          className={`md:col-span-2 lg:col-span-2 relative ${borderThickness} ${borderGradient} ${cardRadius}`}
+        >
           <div 
             className={`${cardInnerRadius} p-8 h-full flex flex-col items-center text-center`}
             style={customCardStyles}
@@ -141,7 +161,7 @@ export default function HuppCleanSectionsNoFeatures() {
               Quem posta ideias, ganha pontos e sobe no ranking.
             </p>
           </div>
-        </div>
+        </AnimateOnScroll>
 
       </div>
     </section>
